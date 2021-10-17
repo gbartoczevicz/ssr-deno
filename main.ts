@@ -1,4 +1,4 @@
-import { makeResponse } from "./src/server/make_response.ts";
+import { makeResponse } from "~/server/make_response.ts";
 
 const server = Deno.listen({ port: 3000 });
 

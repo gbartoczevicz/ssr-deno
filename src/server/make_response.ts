@@ -1,6 +1,6 @@
 import { STATUS_TEXT, Status } from "std/http/mod.ts";
-import { getPageFromName } from "./pages.ts";
-import { serverRender } from "./render.ts";
+import { getPageFromName } from "~/server/pages.ts";
+import { serverRender } from "~/server/render.ts";
 
 export const makeResponse = async (request: Deno.RequestEvent) => {
   const route = request.request.url.substring(
