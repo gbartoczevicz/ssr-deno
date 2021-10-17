@@ -7,7 +7,9 @@ for await (const connection of server) {
     const httpConnection = Deno.serveHttp(connection);
 
     for await (const requestEvent of httpConnection) {
-      await requestEvent.respondWith(await makeResponse(requestEvent));
+      const response = await makeResponse(requestEvent);
+
+      await requestEvent.respondWith(response);
     }
   })();
 }
