@@ -2,10 +2,8 @@ import { STATUS_TEXT, Status } from "std/http/mod.ts";
 import { getPageFromName } from "~/server/pages.ts";
 import { serverRender } from "~/server/render.ts";
 
-export const makeResponse = async (request: Deno.RequestEvent) => {
-  const route = request.request.url.substring(
-    request.request.url.lastIndexOf("/") + 1
-  );
+export const makeResponse = async (request: Request) => {
+  const route = request.url.substring(request.url.lastIndexOf("/") + 1);
 
   let page: unknown;
 

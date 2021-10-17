@@ -1,15 +1,8 @@
+import { listenAndServe } from "std/http/mod.ts";
 import { makeResponse } from "~/server/make_response.ts";
 
-const server = Deno.listen({ port: 3000 });
+listenAndServe(":3000", async (request) => {
+  const response = await makeResponse(request);
 
-for await (const connection of server) {
-  (async () => {
-    const httpConnection = Deno.serveHttp(connection);
-
-    for await (const requestEvent of httpConnection) {
-      const response = await makeResponse(requestEvent);
-
-      await requestEvent.respondWith(response);
-    }
-  })();
-}
+  return response;
+});
